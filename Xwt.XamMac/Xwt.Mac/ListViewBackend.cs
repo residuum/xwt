@@ -163,6 +163,11 @@ namespace Xwt.Mac
 		{
 			return Rectangle.Zero;
 		}
+
+		public Rectangle GetRowBounds (int row, bool includeMargin)
+		{
+			throw new NotImplementedException ();
+		}
 	}
 	
 	class TableRow: NSObject, ITablePosition

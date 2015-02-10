@@ -153,6 +153,29 @@ namespace Xwt.WPFBackend
 	        return Backend.MeasureOverride (constraint, s);
 	    }
 
+		public void UpdateLayout()
+		{
+			base.UpdateLayout();
+
+			ItemContainerGenerator g = ItemContainerGenerator;
+			foreach (TreeStoreNode node in Items)
+			{
+				UpdateNode(g, node);
+			}
+		}
+
+		private static void UpdateNode(ItemContainerGenerator g, TreeStoreNode node)
+		{
+			ExTreeViewItem treeItem = (ExTreeViewItem)g.ContainerFromItem(node);
+			if (treeItem == null)
+				return;
+			treeItem.UpdateLayout();
+			foreach (TreeStoreNode child in node.Children)
+			{
+				UpdateNode(g, child);
+			}
+		}
+
 		protected virtual void OnSelectionModeChanged (DependencyPropertyChangedEventArgs e)
 		{
 			System.Windows.Controls.SelectionMode oldMode = (System.Windows.Controls.SelectionMode) e.OldValue;

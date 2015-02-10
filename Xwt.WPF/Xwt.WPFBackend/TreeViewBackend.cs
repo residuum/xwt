@@ -412,6 +412,8 @@ namespace Xwt.WPFBackend
 
 				if (walk != null)
 					walk (treeItem);
+				if (!treeItem.IsExpanded)
+					break;
 			}
 
 			return treeItem;

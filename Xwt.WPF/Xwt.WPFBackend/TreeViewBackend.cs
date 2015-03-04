@@ -408,12 +408,12 @@ namespace Xwt.WPFBackend
 					continue;
 
 				treeItem.UpdateLayout ();
+				if (!treeItem.IsExpanded)
+					break;
 				g = treeItem.ItemContainerGenerator;
 
 				if (walk != null)
 					walk (treeItem);
-				if (!treeItem.IsExpanded)
-					break;
 			}
 
 			return treeItem;
